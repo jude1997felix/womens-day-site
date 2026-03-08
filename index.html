@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Women's Day</title>
 
 <style>
@@ -28,13 +29,6 @@ font-size:3rem;
 animation:fadeIn 2s ease;
 }
 
-p{
-font-size:1.3rem;
-max-width:600px;
-margin:auto;
-line-height:1.6;
-}
-
 button{
 margin-top:25px;
 padding:12px 25px;
@@ -51,10 +45,12 @@ button:hover{
 transform:scale(1.08);
 }
 
-#extra{
+#message{
 display:none;
 margin-top:20px;
-font-size:1.2rem;
+font-size:1.3rem;
+max-width:600px;
+line-height:1.6;
 }
 
 .flower{
@@ -74,6 +70,12 @@ from{opacity:0;transform:translateY(-20px)}
 to{opacity:1;transform:translateY(0)}
 }
 
+@media (max-width:600px){
+h1{
+font-size:2.2rem;
+}
+}
+
 </style>
 </head>
 
@@ -83,16 +85,15 @@ to{opacity:1;transform:translateY(0)}
 
 <h1>Happy Women's Day 🌸</h1>
 
-<p>
-Today we celebrate the strength, kindness, creativity, and courage of women everywhere.
-The world moves forward because of women who lead, care, innovate, teach, create, and inspire.
-</p>
+<button onclick="showMessage()">Click to Celebrate Women</button>
 
-<button onclick="showMessage()">Celebrate Women</button>
+<div id="message">
+Today we celebrate the strength, courage, and kindness of women everywhere.<br><br>
 
-<div id="extra">
 Women shape families, communities, science, art, and the future itself.<br><br>
-May today be a reminder that your voice matters, your ideas matter, and your presence makes the world brighter.
+
+May today be a reminder that your voice matters, your ideas matter,
+and the world becomes better because you are in it.
 </div>
 
 </div>
@@ -100,7 +101,11 @@ May today be a reminder that your voice matters, your ideas matter, and your pre
 <script>
 
 function showMessage(){
-document.getElementById("extra").style.display="block";
+const msg = document.getElementById("message");
+msg.style.display="block";
+msg.style.opacity="0";
+msg.style.transition="opacity 1.5s";
+setTimeout(()=>{msg.style.opacity="1"},100);
 }
 
 function createFlower(){
